@@ -1,15 +1,25 @@
-simple-js-tools
+simple-cli-tools
 ===============
 
-A repository for simple JavaScript tools that I might want to use multiple times without re-coding them.
+A repository for simple Node.js CLI tools that I might want to use multiple times without re-coding them.
 
-### generateValues
-Command-line interface for generating a comma-separated string of values. Run with:
->```node generateValues.js *args*```
+## Installation
+```
+git clone git@github.com:askjervold/simple-cli-tools.git
+cd simple-cli-tools
+npm install
+```
 
-***args* (numValues lowerBound upperBound growth round):**
-- *numValues*: The number of values you want to generate.
-- *lowerBound*: The (initial) lower bound of the range you want to generate values in.
-- *upperBound*: The (initial) upper bound of the range you want to generate values in.
-- *growth*: If you want to generate gradually larger/smaller values, add a non-zero growth. The growth will be added to the lower and upper bounds after each generated number to use a higher or lower range.
-- *round*: If you want only integer values, supply a truthy value for this argument. Otherwise, the values will be rounded to a single decimal.
+## Usage
+```
+node lib/tools.js --tool=toolName --opt=value
+```
+Options/arguments prefixed with a '?' are optional.
+
+### generateValues _(min max ?growth ?round ?numValues)_:
+Generate a comma-separated list of values.
+- **min**: The (initial) lower bound of the range you want to generate values in.
+- **max**: The (initial) exclusive upper bound of the range you want to generate values in.
+- **growth**: *Optional.* If you want to generate gradually larger/smaller values, you can declare a non-zero growth. The growth will be added to the lower and upper bounds after each generated number to use a higher or lower range.
+- **round**: *Optional.* How many decimals to round to. Default is no rounding. 0 will generate integers.
+- **numValues**: *Optional.* The number of values you want to generate.
