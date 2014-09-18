@@ -1,0 +1,15 @@
+{
+	"name" : "simple-cli-tools",
+	"version" : "0.0.0",
+	"description" : "A collection of simple CLI tools that might or might not be useful.",
+	"repository" :
+ 	{
+ 		"type" : "git",
+ 		"url" : "http://github.com/npm/npm.git"
+	},
+	"main" : "src/tools.js",
+	"dependencies" : 
+	{
+		"yargs" : "^1.3.1"
+	}
+}
