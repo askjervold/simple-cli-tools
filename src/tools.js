@@ -19,7 +19,7 @@ var generateValues = function (args) {
 	var round = keys.indexOf('round') != -1 ? args.round : -1;
 
 	var val = 0,
-		output = '';
+		values = [];
 
 	for (var i = 0; i < numValues; i++) {
 		val = Math.random()*(max-min)+min;
@@ -30,27 +30,29 @@ var generateValues = function (args) {
 			val = val.toFixed(round);
 		}
 
-		if (i < args.numValues-1) {
-			output += val + ', ';
-		}
-		else output += val;
+		values.push(val);
 		min += growth;
 		max += growth;
 	}
 
-	return output;
+	return values.join(', ');
 }
 
-var tools = {'generateValues': generateValues};
+var tools = {
+	'generateValues': {
+		'fun': generateValues,
+		'args': ['min', 'max', '?growth', '?round', '?numValues']
+	}
+};
 
 if (Object.keys(tools).indexOf(input.tool) != -1) {
-	console.log(tools[input.tool](input));
+	console.log(tools[input.tool].fun(input));
 }
 else {
 	console.log('No tool or invalid tool selected. Please select a tool with --tool=nameOfTool. \nAvailable tools are:');
 	var toolNames = Object.keys(tools);
 
 	toolNames.forEach(function (tool) {
-		console.log(tool);
+		console.log(tool + ' (' + tools[tool].args.join(', ') + ')');
 	});
 }
